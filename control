@@ -1,0 +1,9 @@
+Package: com.truehybridx.noaccsplash
+Name: NoAccSplash
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Maintainer: Brandon
+Author: Brandon <brandon@leimobile.com>
+Section: Tweaks
+Description: Removes the Accessory Connected Splash screen from the Music app when connected to certain accessories. This is in beta. I will try to keep this as bug free as I know how but take it for a spin! TESTED on 5.0 and 5.0.1!
