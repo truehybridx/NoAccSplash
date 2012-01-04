@@ -1,1 +1,41 @@
-To be filled
+Removes the Accessory Connected Screen from the Music and Videos app on iOS 5.
+A precompiled toggle is included but isn't required.
+
+v1.0 is a full release with a Toggle and support for the Videos app :/
+
+
+
+Tested Stereos for NoAccSplash
+
+JVC Double DIN - KWXS68
+Pioneer 64BT iPod - DEH-64BT
+Pioneer 44HD - DEH-44HD
+JVC CD Receiver - KDS48
+JVC CD w/ Bluetooth - KDS88BT
+Sony CD - MEXBT39UW
+Sony CD 1WIRE - CDXGT64UIW
+Dual Multicolor - XDMAR6720
+Dual USB - XDMA6438
+Alpine - CDE-124XM
+Alpine - CDE-122
+Alpine - CDE-121
+Kenwood - KDC-BT848U
+Kenwood - KDC-BT648U
+Pioneer - DEH-6300UB
+Pioneer - DEH-33HD
+Pioneer - DEH-3300UB
+Kenwood - KDC-248U
+Kenwood - KDC-348U
+Kenwood - KDC-HD548U
+JVC - KD-HDR70
+JVC - KD-R520
+Sony - CDXGT56UI
+Sony - CDXGT565UP
+
+
+Doesn't work:
+Alpine - CDE-125BT
+
+Home accessories that don't work:
+Altec - IMT630
+Philips - DS7550/37
