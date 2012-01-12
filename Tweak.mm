@@ -1,37 +1,13 @@
-#define PATH @"/var/mobile/Library/Preferences/com.truehybridx.noaccsplash.plist"
+// Removes Accessory Connected
+// TODO Add code to make it universal for iOS 4.x and 5.x
 
 %hook IUAccessoryEventHandler
 
 -(void)showSplashView:(BOOL)view
 {
-    BOOL val = [[[NSDictionary dictionaryWithContentsOfFile:PATH] objectForKey:@"enabled"] boolValue];
-    if (val) {
         return;
-    } else {
-        return %orig;
-    }
-            
 }
 
--(void)tearDownSplashView
-{
-    BOOL val = [[[NSDictionary dictionaryWithContentsOfFile:PATH] objectForKey:@"enabled"] boolValue];
-    if (val) {
-        return;
-    } else {
-        return %orig;
-    }
-}
-
--(void)hideSplashView
-{
-    BOOL val = [[[NSDictionary dictionaryWithContentsOfFile:PATH] objectForKey:@"enabled"] boolValue];
-    if (val) {
-        return;
-    } else {
-        return %orig;
-    }
-}
 
 %end
 
@@ -39,12 +15,12 @@
 
 -(BOOL)canShowNowPlayingControls
 {
-    BOOL val = [[[NSDictionary dictionaryWithContentsOfFile:PATH] objectForKey:@"enabled"] boolValue];
-    if (val) {
         return YES;
-    } else {
-        return %orig;
-    }
 }
 
 %end
+
+%ctor
+{
+    
+}

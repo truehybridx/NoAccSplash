@@ -4,6 +4,6 @@ Depends: mobilesubstrate
 Version: 1.0
 Architecture: iphoneos-arm
 Maintainer: Brandon
-Author: Brandon <brandon@leimobile.com>
+Author: Brandon <truehybridx@gmail.com>
 Section: Tweaks
-Description: Removes the Accessory Connected Splash screen from the Music and Videos app when most accessories. tested on iOS 5.x.
+Description: Removes the Accessory Connected Splash screen from the Music and Videos app with most accessories. tested on iOS 5.x.
