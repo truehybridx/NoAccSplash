@@ -1,2 +1,10 @@
-{ Filter = { Bundles = ( "com.apple.springboard", "com.apple.mobileipod", "com.apple.videos" 
-); }; }
+{
+	Filter = {
+		Bundles = (
+			"com.apple.springboard",
+			"com.apple.mobileipod",
+			"com.apple.videos",
+			"com.apple.Music",
+		);
+	};
+}

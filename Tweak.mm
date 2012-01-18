@@ -1,8 +1,20 @@
 // Removes Accessory Connected
-// TODO Add code to make it universal for iOS 4.x and 5.x
 #define kCFVersionFor5 675.00
 #define kCFVersionFor4 550.32
 
+// Group for hooking iOS 5.x iPad only functions -_- damnit apple
+%group ipadios5
+
+%hook MusicApplication
+
+-(void)_showSplashView:(BOOL)view
+{
+    return;
+}
+
+%end
+
+%end
 
 // Group for hooking iOS 5.x only functions
 %group ios5x
@@ -12,6 +24,22 @@
 -(void)showSplashView:(BOOL)view
 {
         return;
+}
+
+%end
+
+// Only hook UIApplication to check iPad in iOS 5.x
+%hook UIApplication
+
+- (id)init
+{
+    id object = %orig;
+    
+    // Check for running on iPad
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        %init(ipadios5);
+        
+        return object;
 }
 
 %end
@@ -32,7 +60,7 @@
 
 %end
 
-// Same for current iOS Versions
+// Same for current iOS Versions (ungrouped hooks)
 %hook SpringBoard
 
 -(BOOL)canShowNowPlayingControls
@@ -41,6 +69,10 @@
 }
 
 %end
+
+
+
+
 
 %ctor
 {
