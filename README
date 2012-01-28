@@ -1,7 +1,8 @@
 Removes the Accessory Connected Screen from the Music and Videos app on iOS 5.
-A precompiled toggle is included but isn't required.
 
-v1.0 is a full release with a Toggle and support for the Videos app :/
+For full release information and change log, goto http://leimobile.com/noaccsplash-info-page/
+
+If you'd like to make improvements on this, above link has some of the requested features I'm eventually trying to get to.
 
 
 
@@ -19,6 +20,7 @@ Dual USB - XDMA6438
 Alpine - CDE-124XM
 Alpine - CDE-122
 Alpine - CDE-121
+Alpine - IDA-X305
 Kenwood - KDC-BT848U
 Kenwood - KDC-BT648U
 Pioneer - DEH-6300UB
