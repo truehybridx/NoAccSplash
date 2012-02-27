@@ -1,19 +1,37 @@
 // Removes Accessory Connected
 #define kCFVersionFor5 675.00
 #define kCFVersionFor4 550.32
+#define kPrefsPath @"/var/mobile/Library/Preferences/com.truehybridx.noaccsplash.plist"
+
 
 // Hook non-SpringBoard Apps
 %group notSB
 
+// Removes "Displaying on External Display" Splash
 %hook UIScreen
 
 + (NSArray *)screens {
-	return [NSArray arrayWithObject:[self mainScreen]];
+	
+	NSDictionary * prefs = [NSDictionary dictionaryWithContentsOfFile:kPrefsPath];
+    BOOL masterEnabled = [[prefs objectForKey:@"videoEnable"] boolValue];
+    
+    if (masterEnabled)
+    	return [NSArray arrayWithObject:[self mainScreen]];
+    else
+    	return %orig;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if (self == [UIScreen mainScreen])
-		%orig;
+	
+	NSDictionary * prefs = [NSDictionary dictionaryWithContentsOfFile:kPrefsPath];
+    BOOL masterEnabled = [[prefs objectForKey:@"videoEnable"] boolValue];
+    
+    if (masterEnabled) {
+    	if (self == [UIScreen mainScreen])
+			%orig;
+    } else {
+    	%orig;
+    }
 }
 
 %end
@@ -29,7 +47,13 @@
 
 -(void)showSplashView:(BOOL)view
 {
-    return;
+    NSDictionary * prefs = [NSDictionary dictionaryWithContentsOfFile:kPrefsPath];
+    BOOL masterEnabled = [[prefs objectForKey:@"masterEnabled"] boolValue];
+    
+    if (masterEnabled)
+    	return;
+    else
+    	%orig(view);
 }
 
 %end
@@ -43,7 +67,13 @@
 
 -(void)_showSplashView:(BOOL)view
 {
-    return;
+    NSDictionary * prefs = [NSDictionary dictionaryWithContentsOfFile:kPrefsPath];
+    BOOL masterEnabled = [[prefs objectForKey:@"masterEnabled"] boolValue];
+    
+    if (masterEnabled)
+    	return;
+    else
+    	%orig;
 }
 
 %end
@@ -59,7 +89,13 @@
 
 -(void)showSplashView:(BOOL)view
 {
-	return;
+	NSDictionary * prefs = [NSDictionary dictionaryWithContentsOfFile:kPrefsPath];
+    BOOL masterEnabled = [[prefs objectForKey:@"masterEnabled"] boolValue];
+    
+    if (masterEnabled)
+    	return;
+    else
+    	%orig;
 }
 
 %end
@@ -76,7 +112,14 @@
 
 -(BOOL)canShowNowPlayingControls
 {
-    return YES;
+    NSDictionary * prefs = [NSDictionary dictionaryWithContentsOfFile:kPrefsPath];
+    BOOL masterEnabled = [[prefs objectForKey:@"masterEnabled"] boolValue];
+    
+    if (masterEnabled)
+    	return YES;
+    else
+    	return %orig;
+    
 }
 
 %end
@@ -111,11 +154,23 @@
 %end
 
 
-
 // ctor
 %ctor
 {
     %init;
+    
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
+	// Create default preferences if they do not exist. YES DOING IT THE LAZY WAY
+	if (![[NSFileManager defaultManager] fileExistsAtPath:kPrefsPath]) {
+        NSDictionary *defaultPrefs = [NSDictionary dictionaryWithObjectsAndKeys:
+        								[NSNumber numberWithBool:YES], @"masterEnabled", 
+        								[NSNumber numberWithBool:YES], @"videoEnable", 
+        								nil];
+        [defaultPrefs writeToFile:kPrefsPath atomically:YES];
+    }
+    
+    [pool release];
 }
 
 

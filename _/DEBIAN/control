@@ -1,9 +1,10 @@
 Package: com.truehybridx.noaccsplash
 Name: NoAccSplash
 Depends: mobilesubstrate
-Version: 1.6
+Version: 1.7-1
 Architecture: iphoneos-arm
 Maintainer: Brandon
 Author: Brandon <truehybridx@gmail.com>
 Section: Tweaks
-Description: To Be Filled By Repo Management
+Description: TBA by repo management
+Installed-Size: 32
