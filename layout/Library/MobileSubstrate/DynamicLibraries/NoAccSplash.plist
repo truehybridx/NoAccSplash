@@ -3,6 +3,7 @@
 		Bundles = (
 			"com.apple.UIKit",
 			"com.apple.SpringBoard",
+			"com.pandora"
 		);
 	};
 }

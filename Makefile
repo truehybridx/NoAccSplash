@@ -1,5 +1,5 @@
-THEOS_DEVICE_IP=localhost
-THEOS_DEVICE_PORT=2224
+THEOS_DEVICE_IP=10.0.1.7
+THEOS_DEVICE_PORT=22
 
 include theos/makefiles/common.mk
 
