@@ -5,22 +5,6 @@
 
 
 
-// Experimental for Pandora
-
-%hook IDVehicleMonitorBCL
-
-// Maybe if it doesnt get notifications, it wont show the splash?
-- (void)enableAccessoryDidConnectNotification
-{
-
-}
-
-- (void)enableAccessoryDidDisconnectNotification
-{
-	
-}
-
-%end
 
 // Hook non-SpringBoard Apps
 %group notSB
